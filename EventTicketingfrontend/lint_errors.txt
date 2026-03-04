@@ -1,0 +1,102 @@
+
+> event-ticketing-frontend-nextjs@0.1.0 lint
+> next lint
+
+
+./src/app/checkout/page.tsx
+2:1  Warning: Unused eslint-disable directive (no problems were reported from 'react/no-unescaped-entities').
+447:8  Warning: React Hook useEffect has missing dependencies: 'fetchEventData' and 'router'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/events/page.tsx
+3:1  Warning: Unused eslint-disable directive (no problems were reported from 'react/jsx-no-undef').
+4:1  Warning: Unused eslint-disable directive (no problems were reported from '@next/next/no-img-element').
+597:33  Warning: Image elements must have an alt prop, either with meaningful text, or an empty string for decorative images.  jsx-a11y/alt-text
+707:37  Warning: Image elements must have an alt prop, either with meaningful text, or an empty string for decorative images.  jsx-a11y/alt-text
+736:37  Warning: Image elements must have an alt prop, either with meaningful text, or an empty string for decorative images.  jsx-a11y/alt-text
+1713:41  Error: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+1714:41  Error: Do not use an `<a>` element to navigate to `/events/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+1716:41  Error: Do not use an `<a>` element to navigate to `/venues/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+./src/app/events/[id]/page.tsx
+2:1  Warning: Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-unused-expressions').
+595:33  Warning: Image elements must have an alt prop, either with meaningful text, or an empty string for decorative images.  jsx-a11y/alt-text
+694:37  Warning: Image elements must have an alt prop, either with meaningful text, or an empty string for decorative images.  jsx-a11y/alt-text
+736:8  Warning: React Hook useEffect has missing dependencies: 'fetchEventDetails' and 'fetchTicketTypes'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+743:8  Warning: React Hook useEffect has missing dependencies: 'fetchVenueDetails' and 'generateSlideImages'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+749:8  Warning: React Hook useEffect has a missing dependency: 'generateSlideImages'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/login/page.tsx
+269:34  Error: 'AlertCircle' is not defined.  react/jsx-no-undef
+339:24  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+./src/app/mytickets/page.tsx
+467:8  Warning: React Hook useEffect has a missing dependency: 'filterTickets'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/order-confirmation/[orderId]/page.tsx
+486:8  Warning: React Hook useEffect has a missing dependency: 'fetchOrder'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+492:8  Warning: React Hook useEffect has a missing dependency: 'fetchEventDetails'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/organizer/analytics/page.tsx
+626:8  Warning: React Hook useEffect has missing dependencies: 'fetchAnalyticsData' and 'fetchUserPreferences'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/organizer/events/create/page.tsx
+141:8  Warning: React Hook useEffect has missing dependencies: 'fetchInitialData' and 'fetchUserPreferences'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/organizer/events/page.tsx
+501:8  Warning: React Hook useEffect has a missing dependency: 'fetchMyEvents'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/organizer/events/[id]/edit/page.tsx
+359:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+384:8  Warning: React Hook useEffect has missing dependencies: 'fetchUserPreferences' and 'loadEventData'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+1207:49  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+1223:49  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+1277:49  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+1293:49  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app/organizer/events/[id]/page.tsx
+90:8  Warning: React Hook useEffect has missing dependencies: 'fetchEventDetails' and 'fetchTicketTypes'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+323:25  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app/organizer/promo-codes/page.tsx
+78:8  Warning: React Hook useEffect has a missing dependency: 'fetchPromoData'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/organizer/promo-codes/[id]/analytics/page.tsx
+1:1  Warning: Unused eslint-disable directive (no problems were reported from 'react/no-unescaped-entities').
+117:8  Warning: React Hook useEffect has a missing dependency: 'loadData'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/organizer/promo-codes/[id]/edit/page.tsx
+117:8  Warning: React Hook useEffect has a missing dependency: 'loadPromoCode'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/organizer/tickets/page.tsx
+298:8  Warning: React Hook useEffect has missing dependencies: 'fetchEvents' and 'fetchUserPreferences'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+305:8  Warning: React Hook useEffect has a missing dependency: 'fetchTicketTypes'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/organizer/venues/page.tsx
+126:8  Warning: React Hook useEffect has a missing dependency: 'fetchVenues'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+519:49  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+525:49  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+721:61  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+1087:65  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app/profile/page.tsx
+275:8  Warning: React Hook useEffect has missing dependencies: 'loadUserData' and 'router'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+679:41  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+768:49  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+774:49  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app/tickets/page.tsx
+169:8  Warning: React Hook useEffect has a missing dependency: 'fetchEvents'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+175:8  Warning: React Hook useEffect has a missing dependency: 'fetchTicketTypes'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/venues/[id]/page.tsx
+1:1  Warning: Unused eslint-disable directive (no problems were reported from 'react/jsx-no-undef').
+3:1  Warning: Unused eslint-disable directive (no problems were reported from 'react/no-unescaped-entities').
+348:8  Warning: React Hook useEffect has missing dependencies: 'fetchVenueDetails' and 'fetchVenueEvents'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/providers/I18nProvider.tsx
+8012:8  Warning: React Hook useEffect has missing dependencies: 'changeLanguage' and 'currentLanguage'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/hooks/useAuth.tsx
+158:8  Warning: React Hook useCallback has a missing dependency: 'logout'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules

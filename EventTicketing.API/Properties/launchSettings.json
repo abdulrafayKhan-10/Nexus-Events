@@ -1,0 +1,50 @@
+﻿{
+    "$schema": "https://json.schemastore.org/launchsettings.json",
+    "profiles": {
+        "http": {
+            "commandName": "Project",
+            "dotnetRunMessages": true,
+            "launchBrowser": false,
+            "applicationUrl": "http://localhost:5251",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        "https": {
+            "commandName": "Project",
+            "dotnetRunMessages": true,
+            "launchBrowser": false,
+            "applicationUrl": "https://localhost:7025;http://localhost:5251",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        "EventHub Full Platform": {
+            "commandName": "Executable",
+            "executablePath": "powershell.exe",
+            "commandLineArgs": "-Command \"Write-Host 'Starting EventHub Platform...' -ForegroundColor Green; Start-Process cmd -ArgumentList '/k', 'cd /d $(SolutionDir)EventTicketing.API && title Backend API && dotnet run' -WindowStyle Normal; Start-Sleep 8; Start-Process cmd -ArgumentList '/k', 'cd /d $(SolutionDir)EventTicketingfrontend && title Frontend && npm install && npm run dev' -WindowStyle Normal; Start-Sleep 12; Start-Process 'http://localhost:5251/swagger'; Start-Sleep 2; Start-Process 'http://localhost:3000'; Write-Host 'EventHub Platform launched!' -ForegroundColor Green\"",
+            "workingDirectory": "$(SolutionDir)"
+        },
+        "Backend + Open Browser": {
+            "commandName": "Project",
+            "dotnetRunMessages": true,
+            "launchBrowser": false,
+            "applicationUrl": "http://localhost:5251",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "postActions": {
+                "defaultAction": {
+                    "actionType": "url",
+                    "url": "http://localhost:5251/swagger"
+                }
+            }
+        },
+        "Start Both (Simple)": {
+            "commandName": "Executable",
+            "executablePath": "cmd.exe",
+            "commandLineArgs": "/c \"start cmd /k \"cd $(SolutionDir)EventTicketing.API && dotnet run\" && timeout /t 8 >nul && start cmd /k \"cd $(SolutionDir)EventTicketingfrontend && npm run dev\" && timeout /t 10 >nul && start http://localhost:5251/swagger && start http://localhost:3000\"",
+            "workingDirectory": "$(SolutionDir)"
+        }
+    }
+}

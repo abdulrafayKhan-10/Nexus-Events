@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.784122">
+  <PropertyGroup>
+    <StartupCommand>npm run dev</StartupCommand>
+    <JavaScriptTestRoot>src\</JavaScriptTestRoot>
+    <JavaScriptTestFramework>Jest</JavaScriptTestFramework>
+    <ShouldRunBuildScript>false</ShouldRunBuildScript>
+    <BuildOutputFolder>$(MSBuildProjectDirectory)\build</BuildOutputFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="app\**" />
+    <None Remove="components\**" />
+    <None Remove="pages\**" />
+    <TypeScriptConfiguration Remove="app\**" />
+    <TypeScriptConfiguration Remove="components\**" />
+    <TypeScriptConfiguration Remove="pages\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="event-ticketing-frontend-nextjs\" />
+    <Folder Include="public\" />
+  </ItemGroup>
+</Project>

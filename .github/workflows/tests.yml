@@ -1,0 +1,95 @@
+﻿name: EventHub Platform CI/CD
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+jobs:
+  test:
+    name: 🧪 Test Suite
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+    
+    - name: 🔧 Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+        
+    - name: 📦 Restore Dependencies
+      run: dotnet restore
+      
+    - name: 🏗️ Build Project
+      run: dotnet build --no-restore --configuration Release
+      
+    - name: 🧪 Run Tests
+      run: dotnet test EventTicketing.Tests/ --no-build --configuration Release --verbosity normal --logger trx --results-directory TestResults
+      
+    - name: 📊 Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: TestResults/**/*.trx
+        check_name: "🧪 Test Results"
+        comment_title: "🎯 Test Summary"
+
+  build:
+    name: 🏗️ Build & Analyze
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: 🔧 Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+        
+    - name: 📦 Restore Dependencies
+      run: dotnet restore
+      
+    - name: 🏗️ Build API
+      run: dotnet build EventTicketing.API/ --configuration Release --no-restore
+      
+    - name: 🏷️ Create Build Artifact
+      if: github.ref == 'refs/heads/main'
+      run: dotnet publish EventTicketing.API/ -c Release -o ./publish
+      
+    - name: 📤 Upload Build Artifact
+      if: github.ref == 'refs/heads/main'
+      uses: actions/upload-artifact@v4
+      with:
+        name: eventhub-api-${{ github.sha }}
+        path: ./publish
+
+  quality:
+    name: 📋 Quality Gate
+    runs-on: ubuntu-latest
+    needs: [test, build]
+    if: always()
+    
+    steps:
+    - name: ✅ Quality Gate Status
+      run: |
+        echo "🎯 Quality Gate Summary:"
+        echo "- Tests: ${{ needs.test.result }}"
+        echo "- Build: ${{ needs.build.result }}"
+        
+        if [[ "${{ needs.test.result }}" == "success" && "${{ needs.build.result }}" == "success" ]]; then
+          echo "✅ Quality Gate: PASSED"
+          echo "🚀 Ready for deployment!"
+        else
+          echo "❌ Quality Gate: FAILED"
+          exit 1
+        fi
